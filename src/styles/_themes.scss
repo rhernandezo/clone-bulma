@@ -1,0 +1,12 @@
+/* Definimos variables de colores para ambos temas */
+:root {
+  --color-bg: #ffffff;
+  --color-text: #1a1a1a;
+  --color-primary: #00d1b2;
+}
+
+.dark {
+  --color-bg: #1a1a1a;
+  --color-text: #e1e1e1;
+  --color-primary: #00d1b2;
+}

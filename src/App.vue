@@ -1,47 +1,26 @@
-<script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+  <section class="w-full h-full">
+    <button
+      class="absolute bottom-4 right-4 button-circle rounded-full w-12 h-12"
+      @click="toggleDarkMode"
+    >
+      {{ esDark ? '🌙' : '☀️' }}
+    </button>
+  </section>
+  <LayoutBase :class="esDark ? 'dark' : ''" />
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
+<script setup lang="ts">
+import { computed, ref } from 'vue'
+import LayoutBase from './components/layouts/LayoutBase.vue'
+
+const esDark = ref(window.matchMedia('(prefers-color-scheme: dark)').matches)
+
+const toggleDarkMode = () => {
+  esDark.value = !esDark.value
 }
+</script>
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
+<style lang="scss">
+@use './styles/app.scss';
 </style>
