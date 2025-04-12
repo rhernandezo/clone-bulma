@@ -1,12 +1,27 @@
 /* Definimos variables de colores para ambos temas */
 :root {
   --color-bg: #ffffff;
-  --color-text: #1a1a1a;
+  --color-bg-aside: #fcfcfd;
+  --color-bg-footer: #e8e8e8;
+  --color-text: rgb(26, 26, 26);
+  --color-text-sidebar: rgb(80, 80, 80);
+  --color-text-sidebar-hover: rgb(0 0 0 / 5%);
   --color-primary: #00d1b2;
+  --color-border: #e1e1e1;
 }
 
 .dark {
   --color-bg: #1a1a1a;
-  --color-text: #e1e1e1;
+  --color-bg-aside: #1e1f21;
+  --color-bg-footer: #2b2d32;
+  --color-text: rgb(225, 225, 225);
+  --color-text-sidebar: rgb(171, 171, 171);
+  --color-text-sidebar-hover: rgb(255 255 255 / 5%);
   --color-primary: #00d1b2;
+  --color-border: #1a1a1a;
+}
+
+// text
+.text-primary {
+  color: var(--color-primary);
 }

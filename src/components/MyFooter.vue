@@ -1,5 +1,5 @@
 <template>
-  <footer class="p-4">
+  <footer class="footer p-4">
     <div class="container mx-auto">
       <p>&copy; 2024 Footer</p>
     </div>
@@ -8,4 +8,10 @@
 
 <script setup lang="ts"></script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.footer {
+  @apply p-4;
+  background-color: var(--color-bg-footer);
+  color: var(--color-text);
+}
+</style>

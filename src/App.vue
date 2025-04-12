@@ -1,12 +1,10 @@
 <template>
-  <section class="w-full h-full">
-    <button
-      class="absolute bottom-4 right-4 button-circle rounded-full w-12 h-12"
-      @click="toggleDarkMode"
-    >
-      {{ esDark ? '🌙' : '☀️' }}
-    </button>
-  </section>
+  <button
+    class="absolute bottom-4 right-4 button-circle rounded-full w-12 h-12"
+    @click="toggleDarkMode"
+  >
+    {{ esDark ? '🌙' : '☀️' }}
+  </button>
   <LayoutBase :class="esDark ? 'dark' : ''" />
 </template>
 
