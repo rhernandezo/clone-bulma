@@ -34,7 +34,7 @@
             <li v-for="item in subCategory.items" :key="`item-${item.id}`">
               <a
                 class="rounded-lg px-4 py-1 font-light"
-                :class="active ? 'text-primary' : ''"
+                :class="item.active ? 'text-primary' : ''"
                 :href="item.href"
                 >{{ item.name }}</a
               >
