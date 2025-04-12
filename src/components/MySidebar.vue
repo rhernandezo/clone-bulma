@@ -48,8 +48,9 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import type { SidebarCategory, SidebarCategorySubCategory } from '@/types'
 
-const categories = ref([
+const categories = ref<SidebarCategory[]>([
   {
     id: 1,
     name: 'CSS Library',
@@ -78,7 +79,7 @@ const categories = ref([
   },
 ])
 
-const toggleSubCategory = (subCategory: SubCategory) => {
+const toggleSubCategory = (subCategory: SidebarCategorySubCategory) => {
   subCategory.showItems = !subCategory.showItems
 }
 </script>
