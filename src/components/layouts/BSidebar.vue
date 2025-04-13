@@ -1,7 +1,7 @@
 <template>
   <aside class="aside w-64 p-2 hidden md:block">
-    <div v-for="category in categories" :key="`category-${category.id}`">
-      <h2 class="text-cyan-500 font-bold">{{ category.name }}</h2>
+    <div v-for="category in sidebarCategories" :key="`category-${category.id}`">
+      <h2 class="font-bold" :class="category.color">{{ category.name }}</h2>
       <ul
         v-for="subCategory in category.subCategories"
         :key="`sub-category-${subCategory.id}`"
@@ -10,10 +10,11 @@
         <li>
           <a
             class="flex items-center justify-between cursor-pointer rounded-lg px-4 py-1"
-            @click="toggleSubCategory(subCategory)"
+            @click="handleSubCategoryClick(subCategory)"
           >
             <span>{{ subCategory.name }}</span>
             <span
+              v-if="subCategory.items"
               class="text-primary font-extrabold text-xl"
               :class="[
                 'transition-transform duration-300',
@@ -27,7 +28,7 @@
             :class="[
               'ml-4 transition-all duration-300 ease-in-out overflow-hidden',
               subCategory.showItems
-                ? `opacity-100 max-h-[${subCategory.items.length * 40}px]`
+                ? `opacity-100 max-h-[${(subCategory.items ? subCategory.items?.length : 0) * 40}px]`
                 : 'opacity-0 max-h-0',
             ]"
           >
@@ -47,40 +48,26 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-import type { SidebarCategory, SidebarCategorySubCategory } from '@/types'
+import { onBeforeMount, ref } from 'vue'
+import { useRouter } from 'vue-router'
+import { categories, setCurrentView } from '@/composables/useMyCategories'
+import type { MyCategory, MyCategorySubCategory } from '@/types'
 
-const categories = ref<SidebarCategory[]>([
-  {
-    id: 1,
-    name: 'CSS Library',
-    class: 'text-green-500 font-bold',
-    subCategories: [
-      {
-        id: 1,
-        name: 'Elements',
-        showItems: false,
-        items: [
-          { id: 1, name: 'Buttons', href: '#', active: false },
-          { id: 2, name: 'Forms', href: '#', active: false },
-          { id: 3, name: 'Navbar', href: '#', active: false },
-          { id: 4, name: 'Pagination', href: '#', active: false },
-          { id: 5, name: 'Tabs', href: '#', active: false },
-          { id: 6, name: 'Tags', href: '#', active: false },
-        ],
-      },
-      {
-        id: 2,
-        name: 'Otros',
-        showItems: false,
-        items: [{ id: 1, name: 'Blah blah blah', href: '#', active: false }],
-      },
-    ],
-  },
-])
+const router = useRouter()
 
-const toggleSubCategory = (subCategory: SidebarCategorySubCategory) => {
-  subCategory.showItems = !subCategory.showItems
+const sidebarCategories = ref<MyCategory[]>(categories.value)
+
+onBeforeMount(() => {
+  const rutaActual = window.location.pathname
+  setCurrentView(rutaActual)
+})
+
+const handleSubCategoryClick = (subCategory: MyCategorySubCategory) => {
+  if (subCategory.items) {
+    subCategory.showItems = !subCategory.showItems
+  } else if (subCategory.href) {
+    router.push(subCategory.href)
+  }
 }
 </script>
 
@@ -88,6 +75,9 @@ const toggleSubCategory = (subCategory: SidebarCategorySubCategory) => {
 .aside {
   background-color: var(--color-bg-aside);
   color: var(--color-text-sidebar);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 a {

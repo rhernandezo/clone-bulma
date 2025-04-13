@@ -1,15 +1,15 @@
 <template>
   <div id="layout-base" class="flex min-h-screen flex-col">
-    <MyHeader />
-    <MyMain />
-    <MyFooter />
+    <BHeader />
+    <BMain />
+    <BFooter />
   </div>
 </template>
 
 <script setup lang="ts">
-import MyHeader from '@/components/MyHeader.vue'
-import MyMain from '@/components/MyMain.vue'
-import MyFooter from '@/components/MyFooter.vue'
+import BHeader from './BHeader.vue'
+import BMain from './BMain.vue'
+import BFooter from './BFooter.vue'
 </script>
 
 <style scoped>

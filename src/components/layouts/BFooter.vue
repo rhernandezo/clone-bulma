@@ -10,8 +10,10 @@
 
 <style scoped lang="scss">
 .footer {
-  @apply p-4;
   background-color: var(--color-bg-footer);
   color: var(--color-text);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 </style>
