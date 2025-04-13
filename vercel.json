@@ -1,0 +1,9 @@
+{
+    "framework": "vue",
+    "rewrites": [
+        {
+            "source": "/(.*)",
+            "destination": "/index.html"
+        }
+    ]
+}
