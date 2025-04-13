@@ -3,7 +3,12 @@
     class="absolute bottom-4 right-4 button-circle rounded-full w-12 h-12"
     @click="toggleDarkMode"
   >
-    {{ esDark ? '🌙' : '☀️' }}
+    <span v-if="esDark" class="icon text-sm">
+      <i class="fa-solid fa-moon"></i>
+    </span>
+    <span v-else class="icon text-sm">
+      <i class="fa-solid fa-sun"></i>
+    </span>
   </button>
   <LayoutBase :class="esDark ? 'dark' : ''" />
 </template>

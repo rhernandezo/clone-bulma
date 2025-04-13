@@ -21,7 +21,9 @@
                 subCategory.showItems ? 'rotate-90' : 'rotate-0',
               ]"
             >
-              ﹥
+              <span class="icon text-sm">
+                <i class="fa-solid fa-chevron-right"></i>
+              </span>
             </span>
           </a>
           <ul
@@ -50,8 +52,8 @@
 <script setup lang="ts">
 import { onBeforeMount, ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { categories, setCurrentView } from '@/composables/useMyCategories'
-import type { MyCategory, MyCategorySubCategory } from '@/types'
+import { categories, setCategories } from '@/composables/useMyCategories'
+import type { MyCategory, MyCategorySubCategory, MyCategorySubCategoryItem } from '@/types'
 
 const router = useRouter()
 
@@ -59,8 +61,39 @@ const sidebarCategories = ref<MyCategory[]>(categories.value)
 
 onBeforeMount(() => {
   const rutaActual = window.location.pathname
-  setCurrentView(rutaActual)
+  updateSidebarCategories(rutaActual)
 })
+
+function updateSidebarCategories(rutaActual: string) {
+  sidebarCategories.value = categories.value.map((category: MyCategory) => {
+    return {
+      ...category,
+      subCategories: category.subCategories.map((subCategory: MyCategorySubCategory) => {
+        return {
+          ...subCategory,
+          items:
+            subCategory.items && subCategory.items.length > 0
+              ? subCategory.items.map((item: MyCategorySubCategoryItem) => {
+                  return {
+                    ...item,
+                    active: item.href === rutaActual,
+                  }
+                })
+              : undefined,
+          active: subCategory.href ? subCategory.href === rutaActual : false,
+          showItems:
+            subCategory.items && subCategory.items.length > 0
+              ? subCategory.items.some((item) => {
+                  return item.href === rutaActual
+                })
+              : false,
+        }
+      }),
+    }
+  })
+
+  setCategories(sidebarCategories.value)
+}
 
 const handleSubCategoryClick = (subCategory: MyCategorySubCategory) => {
   if (subCategory.items) {

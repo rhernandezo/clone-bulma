@@ -1,6 +1,10 @@
 <template>
   <header class="header p-4">
     <div class="flex flex-1">
+      <!-- <span class="icon text-sm">
+        <i class="fa-solid fa-bars"></i>
+      </span> -->
+
       <h1 class="text-2xl font-bold" @click="router.push('/')">Clone Bulma</h1>
     </div>
   </header>

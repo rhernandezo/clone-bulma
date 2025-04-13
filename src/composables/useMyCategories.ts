@@ -1,5 +1,5 @@
 import { ref } from 'vue'
-import type { MyCategory, MyCategorySubCategory, MyCategorySubCategoryItem } from '@/types'
+import type { MyCategory } from '@/types'
 
 const categories = ref<MyCategory[]>([
   {
@@ -49,31 +49,8 @@ const categories = ref<MyCategory[]>([
   },
 ])
 
-const setCurrentView = (rutaActual: string) => {
-  categories.value = categories.value.map((category: MyCategory) => {
-    return {
-      ...category,
-      subCategories: category.subCategories.map((subCategory: MyCategorySubCategory) => {
-        return {
-          ...subCategory,
-          items:
-            subCategory.items && subCategory.items.length > 0
-              ? subCategory.items.map((item: MyCategorySubCategoryItem) => {
-                  return {
-                    ...item,
-                    active: item.href === rutaActual,
-                  }
-                })
-              : undefined,
-          active: subCategory.href ? subCategory.href === rutaActual : false,
-          showItems:
-            subCategory.items && subCategory.items.length > 0
-              ? subCategory.items.some((item) => item.href === rutaActual)
-              : false,
-        }
-      }),
-    }
-  })
+const setCategories = (currentCategories: MyCategory[]) => {
+  categories.value = currentCategories
 }
 
-export { categories, setCurrentView }
+export { categories, setCategories }
