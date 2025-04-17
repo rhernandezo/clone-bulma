@@ -1,5 +1,5 @@
 <template>
-  <aside class="aside w-64 p-2 hidden md:block">
+  <aside id="lirmi-sidebar" class="bg-aside w-64 p-2 hidden md:block">
     <div v-for="category in sidebarCategories" :key="`category-${category.id}`">
       <h2 class="font-bold" :class="category.color">{{ category.name }}</h2>
       <ul
@@ -12,7 +12,12 @@
             class="flex items-center justify-between cursor-pointer rounded-lg px-4 py-1"
             @click="handleSubCategoryClick(subCategory)"
           >
-            <span>{{ subCategory.name }}</span>
+            <p>
+              <span class="icon text-lg mr-1">
+                <i class="fa-brands fa-elementor"></i>
+              </span>
+              {{ subCategory.name }}
+            </p>
             <span
               v-if="subCategory.items"
               class="text-primary font-extrabold text-xl"
@@ -36,7 +41,7 @@
           >
             <li v-for="item in subCategory.items" :key="`item-${item.id}`">
               <a
-                class="rounded-lg px-4 py-1 font-light"
+                class="flex rounded-lg px-4 py-1 font-light"
                 :class="item.active ? 'text-primary' : ''"
                 :href="item.href"
                 >{{ item.name }}</a
@@ -104,21 +109,4 @@ const handleSubCategoryClick = (subCategory: MyCategorySubCategory) => {
 }
 </script>
 
-<style scoped lang="scss">
-.aside {
-  background-color: var(--color-bg-aside);
-  color: var(--color-text-sidebar);
-  transition:
-    background-color 0.3s ease,
-    color 0.3s ease;
-}
-
-a {
-  @apply rounded-lg px-4 py-1;
-  display: flex;
-
-  &:hover {
-    background-color: var(--color-text-sidebar-hover);
-  }
-}
-</style>
+<style scoped lang="scss"></style>

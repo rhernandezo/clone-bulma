@@ -1,0 +1,7 @@
+#lirmi-sidebar {
+  a {
+    &:hover {
+      background-color: var(--lirmi-color-text-sidebar-hover);
+    }
+  }
+}

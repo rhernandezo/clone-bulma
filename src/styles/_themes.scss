@@ -1,27 +1,33 @@
-/* Definimos variables de colores para ambos temas */
-:root {
-  --color-bg: #ffffff;
-  --color-bg-aside: #fcfcfd;
-  --color-bg-footer: #e8e8e8;
-  --color-text: rgb(26, 26, 26);
-  --color-text-sidebar: rgb(80, 80, 80);
-  --color-text-sidebar-hover: rgb(0 0 0 / 5%);
-  --color-primary: #00d1b2;
-  --color-border: #e1e1e1;
+@use 'sass:color';
+@use 'sass:list';
+
+@use './colors';
+
+$typesColorWhite: 'text', 'white';
+
+@mixin generate-lirmi-color-class($type, $color) {
+  .is-#{$type} {
+    background-color: $color;
+    color: #ffffff;
+    border: none;
+
+    @if list.index($typesColorWhite, $type) {
+      color: #000000;
+      @if $type == 'text' {
+        text-decoration-line: underline;
+      }
+    }
+
+    &:hover {
+      background-color: hsl(
+        color.channel($color, 'hue', $space: hsl),
+        color.channel($color, 'saturation', $space: hsl),
+        color.channel($color, 'lightness', $space: hsl) * 0.95
+      );
+    }
+  }
 }
 
-.dark {
-  --color-bg: #1a1a1a;
-  --color-bg-aside: #1e1f21;
-  --color-bg-footer: #2b2d32;
-  --color-text: rgb(225, 225, 225);
-  --color-text-sidebar: rgb(171, 171, 171);
-  --color-text-sidebar-hover: rgb(255 255 255 / 5%);
-  --color-primary: #00d1b2;
-  --color-border: #1a1a1a;
-}
-
-// text
-.text-primary {
-  color: var(--color-primary);
-}
+@include generate-lirmi-color-class('primary', colors.$colorPrimary);
+@include generate-lirmi-color-class('text', colors.$colorText);
+@include generate-lirmi-color-class('white', colors.$colorWhite);

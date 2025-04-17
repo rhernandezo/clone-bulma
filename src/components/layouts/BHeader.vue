@@ -1,11 +1,13 @@
 <template>
   <header class="header p-4">
-    <div class="flex flex-1">
-      <!-- <span class="icon text-sm">
-        <i class="fa-solid fa-bars"></i>
-      </span> -->
+    <div class="flex flex-1 items-center">
+      <button class="button-icon is-white">
+        <span class="icon text-sm">
+          <i class="fa-solid fa-bars"></i>
+        </span>
+      </button>
 
-      <h1 class="text-2xl font-bold" @click="router.push('/')">Clone Bulma</h1>
+      <h1 class="text-2xl font-bold ml-2" @click="router.push('/')">Liiiiiiiirmi</h1>
     </div>
   </header>
 </template>
@@ -17,12 +19,8 @@ const router = useRouter()
 
 <style scoped lang="scss">
 .header {
-  @apply p-4;
-  border-bottom: 1px solid var(--color-border);
-  background-color: var(--color-bg);
-  color: var(--color-text);
-  transition:
-    background-color 0.3s ease,
-    color 0.3s ease;
+  border-bottom: 1px solid var(--lirmi-color-border);
+  background-color: var(--lirmi-bg);
+  color: var(--lirmi-color-text);
 }
 </style>

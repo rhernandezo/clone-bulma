@@ -1,7 +1,47 @@
 @import 'tailwindcss';
 
-/* @theme {
-  --breakpoint-xs: 30rem;
-  --breakpoint-2xl: 100rem;
-  --breakpoint-3xl: 120rem;
-} */
+:root {
+  --lirmi-border-color: #f5f5f5;
+
+  /* Buttons */
+  --lirmi-button-border-color: hsl(0, 0%, 86%);
+  --lirmi-button-border-color-hover: hsl(0, 0%, 65%);
+  --lirmi-button-border-color-active: hsl(0, 0%, 29%);
+  --lirmi-button-border-color-focus: hsl(337, 100%, 47%);
+
+  /* Colors */
+  --color-info: hsl(197, 96%, 69%);
+  --color-success: hsl(144, 47%, 59%);
+  --color-warning: hsl(41, 93%, 56%);
+  --color-danger: hsl(345, 77%, 65%);
+
+  /* Sidebar */
+  --lirmi-color-text-sidebar: rgb(80, 80, 80);
+  --lirmi-color-text-sidebar-hover: rgb(0 0 0 / 5%);
+}
+
+@theme {
+  --color-primary: hsl(337, 100%, 46%);
+
+  --lirmi-bg: #ffffff;
+  --lirmi-bg-aside: hsl(0deg 0% 96.08%);
+
+  --lirmi-color-text: #363636;
+}
+
+* {
+  font-family: 'Quicksand', sans-serif;
+}
+
+.bg-aside {
+  background-color: var(--lirmi-bg-aside);
+  color: var(--lirmi-color-text-sidebar);
+}
+
+.button {
+  @apply px-4 py-2 cursor-pointer rounded-full;
+}
+
+.button-icon {
+  @apply cursor-pointer rounded-full;
+}
