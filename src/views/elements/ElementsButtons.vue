@@ -18,6 +18,35 @@
         <button class="button is-text">Texto</button>
         <button class="button is-primary">Primary</button>
       </div>
+
+      <div class="space-y-8">
+        <div>
+          <pre class="bg-indigo-950 text-white rounded-md p-2 text-sm overflow-x-auto">
+            <code>
+                &lt;button class="button"&gt;Normal/button&gt;
+                &lt;button class="button is-white"&gt;White/button&gt;
+                &lt;button class="button is-text"&gt;Texto/button&gt;
+                &lt;button class="button is-primary"&gt;Primary/button&gt;
+            </code>
+          </pre>
+        </div>
+        <div>
+          <button
+            class="border px-4 py-2 cursor-pointer rounded-full border-gray-300 hover:border-gray-400"
+          >
+            Normal
+          </button>
+          <button class="bg-primary text-neutral-100 px-4 py-2 cursor-pointer rounded-full">
+            Primary
+          </button>
+          <pre class="bg-gray-100 rounded-md p-4 text-sm overflow-x-auto">
+            <code>
+              &lt;button class="outline px-4 py-2 cursor-pointer rounded-full outline-gray-300 hover:outline-gray-500 focus:outline-none focus:shadow-outline"&gt;Normal&lt;/button&gt;
+              &lt;button class="outline px-4 py-2 cursor-pointer rounded-full outline-gray-300 hover:outline-gray-500 focus:outline-none focus:shadow-outline"&gt;Normal&lt;/button&gt;
+            </code>
+          </pre>
+        </div>
+      </div>
     </section>
 
     <section id="colors" class="mb-8">

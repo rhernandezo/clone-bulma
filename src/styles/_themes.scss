@@ -25,6 +25,14 @@ $typesColorWhite: 'text', 'white';
         color.channel($color, 'lightness', $space: hsl) * 0.95
       );
     }
+
+    &:active {
+      background-color: hsl(
+        color.channel($color, 'hue', $space: hsl),
+        color.channel($color, 'saturation', $space: hsl),
+        color.channel($color, 'lightness', $space: hsl) * 0.9
+      );
+    }
   }
 }
 
